@@ -4,7 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TextSearchAlgorithmsComp"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="TextSearchAlgorithmsComp.MainWindow"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        xmlns:mde="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
+        x:Class="TextSearchAlgorithmsComp.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" ResizeMode="CanMinimize">
     <Grid>
@@ -13,9 +15,9 @@
                 <materialDesign:Card HorizontalAlignment="Left" Margin="50,36,0,0" VerticalAlignment="Top" Height="204" Width="174">
                     <Grid>
                         <Label x:Name="Header1" Content="Wybierz algorytm" HorizontalAlignment="Left" Margin="8,10,0,0" VerticalAlignment="Top" Height="33" Width="156" Background="{x:Null}" FontSize="16" FontWeight="Bold"/>
-                        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="139" Margin="8,48,0,0" VerticalAlignment="Top" Width="156">
+                        <ListBox x:Name="algSelector" HorizontalAlignment="Left" Height="139" Margin="8,48,0,0" VerticalAlignment="Top" Width="156">
                             <ListBoxItem Content="bruteforce" IsSelected="True"/>
-                            <ListBoxItem Content="KMP"/>
+                            <ListBoxItem  Content="KMP"/>
                             <ListBoxItem Content="Boyers Moore"/>
                             <ListBoxItem Content="Rabin - Karp"/>
                         </ListBox>
@@ -27,20 +29,40 @@
                         <Label x:Name="Header2" Content="Wybierz plik" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="33" Width="154" Background="{x:Null}" FontSize="16" FontWeight="Bold"/>
                         <Button x:Name="fileSelectionBtn" Content="Wczytaj plik" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top" Width="156" Click="onFileSelectionBtnClick"/>
                         <materialDesign:Card HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top" Height="97" Width="156">
-                            <TextBlock x:Name="filedatastore" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="77" Width="136"/>
+                            <TextBlock x:Name="filedatastore" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="77" Width="136" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
                         </materialDesign:Card>
                     </Grid>
                 </materialDesign:Card>
 
-                <materialDesign:Card HorizontalAlignment="Right" Margin="0,36,50,0" VerticalAlignment="Top" Height="204" Width="174">
+                <materialDesign:Card HorizontalAlignment="Right" Margin="0,36,50,0" VerticalAlignment="Top" Height="258" Width="174">
                     <Grid>
-                        <CheckBox x:Name="compareAllCheckbox" Content="Porównaj wszystkie" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="32" Width="156" Background="{x:Null}" FontSize="16" Panel.ZIndex="999" Click="onCompareCheckboxChange"/>
-                        <CheckBox x:Name="showHighest" Content="Wyróżnij największy" Margin="15,47,8.4,0" VerticalAlignment="Top" Height="32" Background="{x:Null}" FontSize="14" IsEnabled="False" Panel.ZIndex="999"/>
-                        <CheckBox x:Name="showLowest" Content="Wyróżnij najmniejszy" HorizontalAlignment="Left" Margin="15,84,0,0" VerticalAlignment="Top" Height="32" Width="151" Background="{x:Null}" FontSize="14" IsEnabled="False" Panel.ZIndex="999"/>
+                        <TextBox x:Name="toFind" HorizontalAlignment="Center" Margin="0,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="158" materialDesign:HintAssist.Hint="Wartość do znalezienia"/>
 
-                        <Button x:Name="startBtn" Content="Start" HorizontalAlignment="Left" Margin="8,161,0,0" VerticalAlignment="Top" Width="158" Height="33"/>
+                        <CheckBox x:Name="compareAllCheckbox" Content="Porównaj wszystkie" HorizontalAlignment="Center" Margin="0,110,0,0" VerticalAlignment="Top" Height="32" Width="156" Background="{x:Null}" FontSize="16" Panel.ZIndex="999" Click="onCompareCheckboxChange"/>
+                        <CheckBox x:Name="showHighest" Content="Wyróżnij największy" Margin="15,147,8,0" VerticalAlignment="Top" Height="32" Background="{x:Null}" FontSize="14" IsEnabled="False" Panel.ZIndex="999"/>
+                        <CheckBox x:Name="showLowest" Content="Wyróżnij najmniejszy" HorizontalAlignment="Left" Margin="15,184,0,0" VerticalAlignment="Top" Height="27" Width="151" Background="{x:Null}" FontSize="14" IsEnabled="False" Panel.ZIndex="999"/>
+
+                        <Button x:Name="startBtn" Content="Start" HorizontalAlignment="Center" Margin="0,215,0,0" VerticalAlignment="Top" Width="158" Height="33" Click="startBtn_Click"/>
+                        <TextBox x:Name="numOfRepeats" HorizontalAlignment="Center" Margin="0,80,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="154"/>
+                        <Label x:Name="label" Content="Ilość powtórzeń" HorizontalAlignment="Left" Margin="8,56,0,0" VerticalAlignment="Top" Width="122" RenderTransformOrigin="0.874,0.469"/>
+
                     </Grid>
                 </materialDesign:Card>
+                <materialDesign:Card Margin="52,299,48,10">
+                    <Grid>
+                        <Label x:Name="timersDisplayer" Margin="10,10,10,10"></Label>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Snackbar Background="#FFD64331" IsActive="False" x:Name="ErrorSnackBar" MessageQueue="{materialDesign:MessageQueue}" ClipToBounds="False" RenderTransformOrigin="0.5,0.5">
+                    <materialDesign:Snackbar.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform Y="-15"/>
+                        </TransformGroup>
+                    </materialDesign:Snackbar.RenderTransform>
+                </materialDesign:Snackbar>
             </Grid>
         </materialDesign:Card>
     </Grid>
