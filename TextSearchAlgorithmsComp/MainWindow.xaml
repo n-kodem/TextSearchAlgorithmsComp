@@ -29,7 +29,7 @@
                         <Label x:Name="Header2" Content="Wybierz plik" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="33" Width="154" Background="{x:Null}" FontSize="16" FontWeight="Bold"/>
                         <Button x:Name="fileSelectionBtn" Content="Wczytaj plik" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top" Width="156" Click="onFileSelectionBtnClick"/>
                         <materialDesign:Card HorizontalAlignment="Center" Margin="0,97,0,0" VerticalAlignment="Top" Height="151" Width="156">
-                            <TextBlock x:Name="filedatastore" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="77" Width="136" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
+                            <TextBlock x:Name="filedatastore" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Height="131" Width="136" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"/>
                         </materialDesign:Card>
                     </Grid>
                 </materialDesign:Card>
@@ -43,7 +43,7 @@
                         <CheckBox x:Name="showLowest" Content="Wyróżnij najmniejszy" HorizontalAlignment="Left" Margin="15,184,0,0" VerticalAlignment="Top" Height="27" Width="151" Background="{x:Null}" FontSize="14" IsEnabled="False" Panel.ZIndex="999"/>
 
                         <Button x:Name="startBtn" Content="Start" HorizontalAlignment="Center" Margin="0,215,0,0" VerticalAlignment="Top" Width="158" Height="33" Click="startBtn_Click"/>
-                        <TextBox x:Name="numOfRepeats" HorizontalAlignment="Center" Margin="0,80,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="154"/>
+                        <TextBox x:Name="numOfRepeats" HorizontalAlignment="Center" Margin="0,80,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="158"/>
                         <Label x:Name="label" Content="Ilość powtórzeń" HorizontalAlignment="Left" Margin="8,56,0,0" VerticalAlignment="Top" Width="122" RenderTransformOrigin="0.874,0.469"/>
 
                     </Grid>
