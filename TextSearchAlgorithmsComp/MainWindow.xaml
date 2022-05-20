@@ -12,10 +12,10 @@
     <Grid>
         <materialDesign:Card Height="400" Width="774">
             <Grid>
-                <materialDesign:Card HorizontalAlignment="Left" Margin="50,36,0,0" VerticalAlignment="Top" Height="204" Width="174">
+                <materialDesign:Card HorizontalAlignment="Left" Margin="50,36,0,0" VerticalAlignment="Top" Height="258" Width="174">
                     <Grid>
                         <Label x:Name="Header1" Content="Wybierz algorytm" HorizontalAlignment="Left" Margin="8,10,0,0" VerticalAlignment="Top" Height="33" Width="156" Background="{x:Null}" FontSize="16" FontWeight="Bold"/>
-                        <ListBox x:Name="algSelector" HorizontalAlignment="Left" Height="139" Margin="8,48,0,0" VerticalAlignment="Top" Width="156">
+                        <ListBox x:Name="algSelector" HorizontalAlignment="Center" Height="141" Margin="0,72,0,0" VerticalAlignment="Top" Width="156">
                             <ListBoxItem Content="bruteforce" IsSelected="True"/>
                             <ListBoxItem  Content="KMP"/>
                             <ListBoxItem Content="Boyers Moore"/>
@@ -24,11 +24,11 @@
                     </Grid>
                 </materialDesign:Card>
 
-                <materialDesign:Card HorizontalAlignment="Left" Margin="302,36,0,0" VerticalAlignment="Top" Height="204" Width="174">
+                <materialDesign:Card HorizontalAlignment="Left" Margin="302,36,0,0" VerticalAlignment="Top" Height="258" Width="174">
                     <Grid>
                         <Label x:Name="Header2" Content="Wybierz plik" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="33" Width="154" Background="{x:Null}" FontSize="16" FontWeight="Bold"/>
                         <Button x:Name="fileSelectionBtn" Content="Wczytaj plik" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top" Width="156" Click="onFileSelectionBtnClick"/>
-                        <materialDesign:Card HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top" Height="97" Width="156">
+                        <materialDesign:Card HorizontalAlignment="Center" Margin="0,97,0,0" VerticalAlignment="Top" Height="151" Width="156">
                             <TextBlock x:Name="filedatastore" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="77" Width="136" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
                         </materialDesign:Card>
                     </Grid>

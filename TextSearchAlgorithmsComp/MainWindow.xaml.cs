@@ -36,8 +36,6 @@ namespace TextSearchAlgorithmsComp
         //A utility function to get maximum of two integers
         private static int max(int a, int b) { return (a > b) ? a : b; }
 
-        bool IsDigitsOnly(string s) => s.All(char.IsDigit);
-
         long CalculateAvg(List<long> li)
         {
             long avg = 0;
@@ -50,11 +48,11 @@ namespace TextSearchAlgorithmsComp
         {
             int i;
 
-            // Initialize all occurrences as -1
+            // initialize all occurrences as -1
             for (i = 0; i < d; i++)
                 badchar[i] = -1;
 
-            // Fill the actual value of last occurrence of a character
+            // fill the actual value of last occurrence of a character
             for (i = 0; i < size; i++)
                 badchar[(int)str[i]] = i;
         }
@@ -66,7 +64,7 @@ namespace TextSearchAlgorithmsComp
 
             int[] badchar = new int[d];
 
-            // Fill the bad character array 
+            // fill the bad character array 
             badCharHeuristic(pat, m, badchar);
 
             int s = 0; // shift of the pattern with respect to text
@@ -90,18 +88,18 @@ namespace TextSearchAlgorithmsComp
             return -1;
         }
 
-        // Bruteforce text pattern search
+        // bruteforce text pattern search
         private int bruteForce(string text, string pattern)
         {
-            // Text fragment to compare
+            // text fragment to compare
             string compText;
             for (int i = 0; i <= text.Length-pattern.Length; i++)
             {
-                // Creating fragment
+                // creating fragment
                 compText = "";
                 for (int j = 0; j < pattern.Length; j++)
                     compText+=text[j+i];
-                // Match check
+                // match check
                 if (compText == pattern)
                     return i;
             }
@@ -117,7 +115,7 @@ namespace TextSearchAlgorithmsComp
             int[] lps = new int[M];
             int j = 0; // index for pat[]
 
-            // Preprocess the pattern (calculate lps[] array)
+            // preprocess the pattern (calculate lps[] array)
             computeLPSArray(pat, M, lps);
 
             int i = 0; // index for txt[]
@@ -155,7 +153,7 @@ namespace TextSearchAlgorithmsComp
             int i = 1;
             lps[0] = 0; // lps[0] is always 0
 
-            // the loop calculates lps[i] for i = 1 to M-1
+            // the loop calculates lps[i]
             while (i < M)
             {
                 if (pat[i] == pat[len])
@@ -209,14 +207,13 @@ namespace TextSearchAlgorithmsComp
                 //If the hash values match then only check for characters one by one
                 if (p == t)
                 {
-                    /* Check for characters one by one */
+                    // Check for characters
                     for (j = 0; j < M; j++)
                     {
                         if (txt[i + j] != pat[j])
                             break;
                     }
 
-                    // if p == t and pat[0...M-1] = txt[i, i+1, ...i+M-1]
                     if (j == M)
                         //FOUND SEARCH
                         return i;
